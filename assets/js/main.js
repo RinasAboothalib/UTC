@@ -79,6 +79,27 @@
   // Image reveals inherit their card's stagger delay
   $$(".card-media").forEach(function (m) { var c = m.closest(".card"); if (c && c.style.getPropertyValue("--d")) m.style.setProperty("--d", c.style.getPropertyValue("--d")); });
 
+  // Hero accent words: split into letters for the wave, each coloured along the brand gradient
+  var accentWords = $$(".hero h1 .aw");
+  var accentLetters = accentWords.reduce(function (n, w) { return n + w.textContent.length; }, 0);
+  var ci = 0;
+  accentWords.forEach(function (w) {
+    var text = w.textContent;
+    w.textContent = "";
+    text.split("").forEach(function (ch) {
+      var span = document.createElement("span");
+      span.className = "ch"; span.textContent = ch;
+      span.style.setProperty("--c", ci);
+      span.style.setProperty("--t", (ci / Math.max(accentLetters - 1, 1)).toFixed(3));
+      span.setAttribute("aria-hidden", "true");
+      w.appendChild(span); ci++;
+    });
+    w.classList.add("split");
+  });
+  // Letters are aria-hidden, so give the heading its words back
+  var heroH1 = document.querySelector(".hero h1");
+  if (heroH1 && accentWords.length) heroH1.setAttribute("aria-label", heroH1.textContent.replace(/\s+/g, " ").trim());
+
   // Headings: split into words that rise in one after another
   $$(".section-head h2, .split h2").forEach(function (h) {
     var i = 0;

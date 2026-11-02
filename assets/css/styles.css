@@ -631,14 +631,21 @@ a.f-card:hover { background: rgba(255, 255, 255, .09); border-color: rgba(94, 18
 .js .hero-copy > :nth-child(5), .js .page-hero .container > :nth-child(5) { animation-delay: .32s; }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
 
-/* Gradient shimmer on the hero accent words */
-.hero h1 .aw {
-  transform-origin: 50% 100%;
-  animation: word-in 1s var(--ease-out) both, shimmer 6s ease-in-out infinite, word-float 5s ease-in-out infinite;
-  animation-delay: calc(.35s + var(--i) * .16s), calc(var(--i) * -1.2s), calc(1.6s + var(--i) * .4s);
+/* Hero accent words: soft rise-in, then a slow wave rolls through the letters */
+.hero h1 .aw { animation: word-in 1.1s var(--ease-out) both; animation-delay: calc(.35s + var(--i) * .18s); }
+@keyframes word-in { from { opacity: 0; transform: translateY(.35em); filter: blur(8px); } }
+/* JS splits each word into letters coloured along the blue→teal gradient (--t) */
+.hero h1 .aw.split { background: none; color: inherit; }
+.hero h1 .aw .ch {
+  display: inline-block;
+  color: color-mix(in oklab, var(--utc-blue), var(--utc-teal) calc(var(--t) * 100%));
+  animation: letter-wave 4.2s cubic-bezier(.45, 0, .55, 1) infinite;
+  animation-delay: calc(2s + var(--c) * .11s);
 }
-@keyframes word-in { from { opacity: 0; transform: translateY(.5em) rotateX(-70deg) scale(.92); filter: blur(10px); } }
-@keyframes word-float { 50% { transform: translateY(-.05em); } }
+@keyframes letter-wave {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-.07em); }
+}
 .accent-line path { stroke-dasharray: 320; animation: line-draw 1.1s var(--ease-wipe) 1.05s both; }
 @keyframes line-draw { from { stroke-dashoffset: 320; } }
 @keyframes shimmer { 50% { background-position: 100% 0; } }
