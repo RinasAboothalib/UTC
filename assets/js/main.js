@@ -228,7 +228,6 @@
   if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     var dot = document.createElement("div"), ring = document.createElement("div");
     dot.className = "cursor-dot"; ring.className = "cursor-ring";
-    ring.innerHTML = "<span>View</span>";
     dot.setAttribute("aria-hidden", "true"); ring.setAttribute("aria-hidden", "true");
     document.body.appendChild(dot); document.body.appendChild(ring);
 
@@ -250,8 +249,7 @@
     function cursorState(t) {
       var hit = function (sel) { return !!(t && t.closest && t.closest(sel)); };
       root.classList.toggle("cursor-hidden", hit("input, textarea, select, iframe"));
-      root.classList.toggle("cursor-view", hit(".project-card"));
-      root.classList.toggle("cursor-hover", hit("a, button, .card, label, .marquee-track li") && !hit(".project-card"));
+      root.classList.toggle("cursor-hover", hit("a, button, .card, label, .marquee-track li"));
     }
     document.addEventListener("pointerdown", function () { root.classList.add("cursor-down"); });
     document.addEventListener("pointerup", function () { root.classList.remove("cursor-down"); });

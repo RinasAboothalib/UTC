@@ -313,11 +313,6 @@ p { margin: 0 0 var(--s-3); }
 /* Project card */
 .project-card { cursor: pointer; text-align: left; font: inherit; color: inherit; padding: 0; }
 .project-card .card-media { aspect-ratio: 4 / 3; }
-.project-card .count {
-  position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(14, 27, 42, .75); color: #fff; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: var(--r-pill);
-}
-.project-card .count svg { width: 14px; height: 14px; }
 .meta { display: grid; gap: 6px; margin: 4px 0 0; font-size: 14px; }
 .meta div { display: grid; grid-template-columns: 70px 1fr; gap: 8px; }
 .meta dt { font-weight: 600; color: var(--label); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding-top: 2px; }
@@ -717,12 +712,8 @@ a.f-card:hover { background: rgba(255, 255, 255, .09); border-color: rgba(94, 18
   display: grid; place-items: center; color: #fff; font: 600 12px/1 var(--font); letter-spacing: .06em; text-transform: uppercase;
   transition: opacity .3s, width .35s var(--ease-out), height .35s var(--ease-out), margin .35s var(--ease-out), background-color .35s, border-color .35s;
 }
-.cursor-ring span { opacity: 0; transition: opacity .2s; }
 .cursor-hover .cursor-ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(0, 153, 220, .12); border-color: var(--utc-blue); }
 .cursor-hover .cursor-dot { opacity: 0; }
-.cursor-view .cursor-ring { width: 92px; height: 92px; margin: -46px 0 0 -46px; background: rgba(0, 37, 76, .82); border-color: transparent; backdrop-filter: blur(4px); }
-.cursor-view .cursor-ring span { opacity: 1; }
-.cursor-view .cursor-dot { opacity: 0; }
 .cursor-down .cursor-ring { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
 .cursor-hidden .cursor-dot, .cursor-hidden .cursor-ring { opacity: 0 !important; }
 html.has-cursor, html.has-cursor * { cursor: none !important; }
