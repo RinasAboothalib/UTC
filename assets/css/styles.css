@@ -515,6 +515,7 @@ p { margin: 0 0 var(--s-3); }
 .scroll-cue span { position: absolute; left: 50%; top: 8px; width: 4px; height: 9px; margin-left: -2px; border-radius: 2px; background: var(--utc-teal); animation: cue 1.8s ease-in-out infinite; }
 @keyframes cue { 0% { opacity: 0; translate: 0 0; } 30% { opacity: 1; } 100% { opacity: 0; translate: 0 16px; } }
 #content { scroll-margin-top: var(--header-h); }
+.hero .scroll-cue { display: none; }
 
 /* ---------- Home: 4 services, expand for more ---------- */
 .services-preview .is-extra { display: none; }
@@ -806,16 +807,17 @@ html.has-cursor input, html.has-cursor textarea, html.has-cursor select, html.ha
 @media (max-width: 767px) {
   :root { --section-y: var(--s-7); --gutter: 16px; }
   body { font-size: 16px; }
-  .hero { padding: var(--s-4) 0 var(--s-4); }
-  .hero-grid.hero-center { padding: var(--s-3) 0 0; }
-  .hero .label { margin-bottom: 12px; font-size: 11px; }
-  .hero h1 { margin-bottom: 14px; }
+  .hero { min-height: calc(100svh - var(--header-h)); display: flex; align-items: center; padding: var(--s-5) 0 var(--s-8); }
+  .hero > .container { width: 100%; }
+  .hero-grid.hero-center { padding: 0; }
+  .hero .scroll-cue { display: block; }
+  .hero .label { margin-bottom: 16px; font-size: 11px; }
+  .hero h1 { margin-bottom: 20px; }
   .hero-center h1 { font-size: clamp(2.5rem, 12.4vw, 3.4rem); letter-spacing: -0.04em; }
   .hero .lead { font-size: 16px; line-height: 1.55; margin-bottom: 0; }
-  .hero-facts { margin-top: var(--s-3); gap: 6px 14px; font-size: 13px; }
+  .hero-facts, .roadmap { display: none; }
   .hero .arc-1 { width: 320px; height: 320px; border-width: 36px; right: -170px; top: -140px; }
   .hero .arc-2 { display: none; }
-  .roadmap { padding: var(--s-4) 0 var(--s-5); }
   .hero-media { height: 340px; grid-template-columns: 1fr 1fr; }
   .hero-media figcaption { font-size: 12px; padding: 5px 10px; left: 8px; bottom: 8px; }
   .btn-row .btn { flex: 1 1 auto; }
@@ -836,7 +838,7 @@ html.has-cursor input, html.has-cursor textarea, html.has-cursor select, html.ha
   .footer-mid { flex-direction: column; align-items: flex-start; }
   .footer-nav { gap: 6px 20px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .page-hero { min-height: 0; padding: var(--s-5) 0 var(--s-6); }
+  .page-hero { min-height: calc(100svh - var(--header-h)); padding: var(--s-5) 0 var(--s-8); }
   .page-hero h1 { font-size: clamp(2.6rem, 12.5vw, 3.6rem); margin-bottom: 14px; }
   .page-hero .lead { font-size: 16px; }
   .page-hero .label, .breadcrumb { margin-bottom: 12px; }
@@ -844,7 +846,7 @@ html.has-cursor input, html.has-cursor textarea, html.has-cursor select, html.ha
   .service-index { margin: var(--s-3) calc(var(--gutter) * -1) 0; padding: 0 var(--gutter) 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .service-index::-webkit-scrollbar { display: none; }
   .service-index a { flex: none; white-space: nowrap; }
-  .scroll-cue { display: none; }
+  .scroll-cue { bottom: 22px; }
   .filters { flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; }
   .filters::-webkit-scrollbar { display: none; }
   .filter-btn { flex: none; white-space: nowrap; }
